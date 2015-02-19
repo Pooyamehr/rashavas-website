@@ -8,7 +8,7 @@ from models.db import *
 @get('/app')
 @view('index')
 def index():
-    return dict(name="ok")
+    return dict(name="my project name")
 
 
 @get('/db/:name')
