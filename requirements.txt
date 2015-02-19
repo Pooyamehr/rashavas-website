@@ -3,3 +3,5 @@ gunicorn
 bottle
 bottle-sqlalchemy
 mako
+redis
+bottle-redis

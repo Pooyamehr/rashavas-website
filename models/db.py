@@ -19,6 +19,11 @@ database_plugin = sqlalchemy.Plugin(
 install(database_plugin)
 
 
+from bottle_redis import RedisPlugin
+install(RedisPlugin())
+
+
+
 class Entity(Base):
     __tablename__ = 'entity'
     id = Column(Integer, Sequence('id_seq'), primary_key=True)
