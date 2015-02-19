@@ -1,35 +1,18 @@
 #!/usr/bin/env python
+#from gevent import monkey
+#monkey.patch_all()
+from bottle import Bottle, run
+from controllers import example
 
-from bottle import get, post, delete, put, run, view, template, static_file
-from bottle import HTTPError
-from models.db import *
-
-
-@get('/app')
-@view('index')
-def index():
-    return dict(name="my project name")
-
-
-@get('/db/:name')
-def show(name, db):
-    entity = db.query(Entity).filter_by(name=name).first()
-    if entity:
-        return {'id': entity.id, 'name': entity.name}
-    return HTTPError(404, 'Entity not found.')
-
-@put('/db/:name')
-def put_name(name, db):
-    entity = Entity(name)
-    db.add(entity)
-
-
-
-@get('/<filename:path>')
-def send_static(filename):
-    return static_file(filename, root='views')
-
+root = Bottle()
 
 if __name__ == '__main__':
-    run(host='0.0.0.0', port=8080, server='gunicorn',
-        workers=4, debug=True)
+    try:
+        import bjoern
+        server = 'bjoern'
+    except ImportError:
+        import gunicorn
+        server ='gunicorn'
+    finally:
+        run(host='0.0.0.0', port=5000, server=server,
+            workers=16, debug=False)
