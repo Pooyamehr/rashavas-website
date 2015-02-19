@@ -20,7 +20,7 @@ Visit `http://127.0.0.1:8080/app` with your browser
 ## Usage
 
 ### AngularJS
-Because bottle uses `{{ }}`` for templating,  I changed angular templating to `{! !}`.
+Because bottle uses `{{ }}` for templating,  I changed angular templating to `{! !}`.
 
 
 
