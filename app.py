@@ -8,8 +8,8 @@ root = Bottle()
 
 if __name__ == '__main__':
     try:
-        import bjoern
-        server = 'bjoern'
+        import eventlet
+        server = 'eventlet'
     except ImportError:
         import gunicorn
         server ='gunicorn'

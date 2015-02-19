@@ -1,0 +1,5 @@
+eventlet
+gunicorn
+bottle
+bottle-sqlalchemy
+mako
