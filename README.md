@@ -15,7 +15,7 @@ python app.py
 
 ## Test
 
-Visit `http://127.0.0.1:8080/app` with your browser
+Visit [127.0.0.1:8080/app](http://127.0.0.1:8080/app)
 
 
 

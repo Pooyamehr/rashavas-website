@@ -16,15 +16,16 @@ def index():
 @get('/db/:name')
 def show(name, db, rdb):
     '''rdb is redis db.  db is a sqlite db'''
-    entity = db.query(Entity).filter_by(name=name).first()
+    entity = Entity.query.filter_by(name=name).first()
     if entity:
         return {'id': entity.id, 'name': entity.name}
     return HTTPError(404, 'Entity not found.')
 
-@put('/db/:name')
+@post('/db/:name')
 def put_name(name, db, rdb):
     entity = Entity(name)
     db.add(entity)
+
 
 
 
