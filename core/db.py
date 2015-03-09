@@ -53,7 +53,7 @@ class SP(sqlalchemy.Plugin):
 
 
 
-engine = create_engine('sqlite:///databases/db.sqlite', echo=True)
+engine = create_engine('sqlite:///databases/db.sqlite', echo=False)
 session_factory = sessionmaker(bind=engine)
 Session = scoped_session(session_factory)
 

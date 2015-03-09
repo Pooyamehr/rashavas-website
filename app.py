@@ -1,27 +1,35 @@
 #!/usr/bin/env python
 
+
 def getControlers():
-    from bottle import Bottle
     ## Import your apps here
     #*************************************************************
+
     from controllers import example
 
     #*************************************************************
-    ##
-    root = Bottle()
 
 
 
-if __name__ == '__main__':
-    try:
-        from gevent import monkey
-        monkey.patch_all()
-        server = 'gevent'
-    except ImportError:
-        import gunicorn
-        server ='gunicorn'
-    finally:
-        from bottle import run
-        getControlers()
-        run(host='0.0.0.0', port=5000, server=server,
-            debug=False)
+
+
+
+
+
+
+
+
+getControlers()
+from bottle import Bottle, run
+root = Bottle()
+
+try:
+    import gunicorn
+    server ='gunicorn'
+except ImportError:
+    server = 'auto'
+finally:
+    import multiprocessing
+    cpc = multiprocessing.cpu_count()
+    run(host='0.0.0.0', port=5000, server=server,
+        workers=cpc*2+1, debug=False)
