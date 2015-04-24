@@ -191,6 +191,17 @@ def _get_supervisord_config():
     sudo('rm -f /etc/supervisord.conf')
     sudo('ln -s %s/config/supervisor/supervisord.conf /etc/supervisord.conf'%_get_pwd())
 
+def _install_basho_repo():
+    #!/bin/bash
+
+    HOSTNAME='basho_riak'
+    FILENAME='/etc/yum.repos.d/basho.repo'
+    OS='el'
+    DIST='5'
+    PACKAGE_CLOUD_RIAK_DIR='https://packagecloud.io/install/repositories/basho/riak'
+    cmd = '''curl "%s/config_file.repo?os=%s&dist=%s&name=%s" > %s''' %\
+        (PACKAGE_CLOUD_RIAK_DIR, OS, DIST, HOSTNAME, FILENAME)
+    po_info = sudo(cmd)
 
 
 
