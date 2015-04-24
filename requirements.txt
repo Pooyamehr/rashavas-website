@@ -4,3 +4,4 @@ bottle-sqlalchemy
 mako
 redis
 bottle-redis
+fabric

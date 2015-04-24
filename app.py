@@ -31,5 +31,5 @@ except ImportError:
 finally:
     import multiprocessing
     cpc = multiprocessing.cpu_count()
-    run(host='0.0.0.0', port=5000, server=server,
+    run(host='0.0.0.0', port=5010, server=server,
         workers=cpc*2+1, debug=False)
