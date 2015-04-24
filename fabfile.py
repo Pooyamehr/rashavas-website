@@ -178,6 +178,19 @@ def _prepare_supervisor():
     sudo('chkconfig supervisord on')
 
 
+def _get_supervisord_config():
+    temp = Template(filename='%s/config/supervisor/conf.tml' % _get_pwd())
+    conf = temp.render(dir=_get_pwd())
+    #print conf
+    with open('%s/config/supervisor/rashavas.conf' % _get_pwd(), 'wb') as f:
+        f.write(conf)
+
+    output = env.run('echo_supervisord_conf', capture=True)
+    with open('%s/config/supervisor/supervisord.conf'%_get_pwd(), 'wb') as f:
+        f.write(output + conf)
+    sudo('rm -f /etc/supervisord.conf')
+    sudo('ln -s %s/config/supervisor/supervisord.conf /etc/supervisord.conf'%_get_pwd())
+
 
 
 
