@@ -2,7 +2,7 @@ from fabric.api import run, env, hosts, local, task, cd, lcd, settings, prompt, 
 
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src/api')))
+
 
 
 import shutil
@@ -12,6 +12,10 @@ nginx_version = '1.8.0'
 redis_version = '3.0.0'
 ruby_version = '2.2.0'
 openssl_version = '1.0.2'
+
+env.run = local
+env.hosts = ['localhost']
+env.cd = lcd
 
 
 @task
